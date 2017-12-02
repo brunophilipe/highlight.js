@@ -58,7 +58,7 @@ function(hljs) {
         begin: /<\?xml/, end: /\?>/, relevance: 10
       },
       {
-        begin: /<\?(php)?/, end: /\?>/,
+        begin: /<\?(php|=)?/, end: /\?>/,
         subLanguage: 'php',
         contains: [
           // We don't want the php closing tag ?> to close the PHP block when
