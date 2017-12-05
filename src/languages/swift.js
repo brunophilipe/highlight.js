@@ -12,11 +12,10 @@ function(hljs) {
         'break case catch class continue convenience default defer deinit didSet do ' +
         'dynamic dynamicType else enum extension fallthrough false fileprivate final for func ' +
         'get guard if import in indirect infix init inout internal is lazy left let ' +
-        'mutating nil none nonmutating open operator optional override postfix precedence ' +
+        'mutating none nonmutating open operator optional override postfix precedence ' +
         'prefix private protocol Protocol public repeat required rethrows return ' +
         'right self Self set static struct subscript super switch throw throws true ' +
-        'try try! try? Type typealias unowned var weak where while willSet',
-      literal: 'true false nil',
+        'try try! try? Type typealias unowned var weak where while willSet true false nil _',
       built_in: 'abs advance alignof alignofValue anyGenerator assert assertionFailure ' +
         'bridgeFromObjectiveC bridgeFromObjectiveCUnconditional bridgeToObjectiveC ' +
         'bridgeToObjectiveCUnconditional c contains count countElements countLeadingZeros ' +
@@ -54,13 +53,13 @@ function(hljs) {
   };
   var NUMBERS = {
       className: 'number',
-      begin: '\\b([\\d_]+(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
+      begin: '\\b([\\d]+[\\d_]*(\\.[\\deE_]+)?|0x[a-fA-F0-9_]+(\\.[a-fA-F0-9p_]+)?|0b[01_]+|0o[0-7_]+)\\b',
       relevance: 0
   };
   var QUOTE_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {
     contains: [SUBST, hljs.BACKSLASH_ESCAPE]
   });
-  SUBST.contains = [NUMBERS];
+  SUBST.contains = [NUMBERS, {begin: /\(/, end: /\)/}];
 
   return {
     keywords: SWIFT_KEYWORDS,
