@@ -50,6 +50,10 @@ function(hljs) {
         }
       ),
       {
+        className: 'literal',
+        begin: /&\w+;/
+      },
+      {
         begin: '<\\!\\[CDATA\\[', end: '\\]\\]>',
         relevance: 10
       },
