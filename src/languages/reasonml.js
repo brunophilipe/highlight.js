@@ -1,9 +1,11 @@
 /*
 Language: ReasonML
+Description: Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript & OCaml ecosystems.
+Website: https://reasonml.github.io
 Author: Gidi Meir Morris <oss@gidi.io>
 Category: functional
 */
-function(hljs) {
+export default function(hljs) {
   function orReValues(ops){
     return ops
     .map(function(op) {
@@ -19,7 +21,7 @@ function(hljs) {
 
   var RE_IDENT = '~?[a-z$_][0-9a-zA-Z$_]*';
   var RE_MODULE_IDENT = '`?[A-Z$_][0-9a-zA-Z$_]*';
-  
+
   var RE_PARAM_TYPEPARAM = '\'?[a-z$_][0-9a-z$_]*';
   var RE_PARAM_TYPE = '\s*:\s*[a-z$_][0-9a-z$_]*(\(\s*(' + RE_PARAM_TYPEPARAM + '\s*(,' + RE_PARAM_TYPEPARAM + ')*)?\s*\))?';
   var RE_PARAM = RE_IDENT + '(' + RE_PARAM_TYPE + ')?(' + RE_PARAM_TYPE + ')?';
@@ -28,9 +30,9 @@ function(hljs) {
 
   var KEYWORDS = {
     keyword:
-      'and as asr assert begin class constraint do done downto else end exception external' +
-      'for fun function functor if in include inherit initializer' +
-      'land lazy let lor lsl lsr lxor match method mod module mutable new nonrec' +
+      'and as asr assert begin class constraint do done downto else end exception external ' +
+      'for fun function functor if in include inherit initializer ' +
+      'land lazy let lor lsl lsr lxor match method mod module mutable new nonrec ' +
       'object of open or private rec sig struct then to try type val virtual when while with',
     built_in:
       'array bool bytes char exn|5 float int int32 int64 list lazy_t|5 nativeint|5 ref string unit ',
@@ -38,13 +40,13 @@ function(hljs) {
       'true false'
   };
 
-  const RE_NUMBER = '\\b(0[xX][a-fA-F0-9_]+[Lln]?|' +
+  var RE_NUMBER = '\\b(0[xX][a-fA-F0-9_]+[Lln]?|' +
     '0[oO][0-7_]+[Lln]?|' +
     '0[bB][01_]+[Lln]?|' +
     '[0-9][0-9_]*([Lln]|(\\.[0-9_]*)?([eE][-+]?[0-9_]+)?)?)';
 
-  const NUMBER_MODE = {
-    className: 'number',    
+  var NUMBER_MODE = {
+    className: 'number',
     relevance: 0,
     variants: [
       {
@@ -56,12 +58,12 @@ function(hljs) {
     ]
   };
 
-  const OPERATOR_MODE = {
+  var OPERATOR_MODE = {
     className: 'operator',
     relevance: 0,
     begin: RE_OPERATOR
   };
-  const LIST_CONTENTS_MODES = [
+  var LIST_CONTENTS_MODES = [
     {
       className: 'identifier',
       relevance: 0,
@@ -71,7 +73,7 @@ function(hljs) {
     NUMBER_MODE
   ];
 
-  const MODULE_ACCESS_CONTENTS = [
+  var MODULE_ACCESS_CONTENTS = [
     hljs.QUOTE_STRING_MODE,
     OPERATOR_MODE,
     {
@@ -88,7 +90,7 @@ function(hljs) {
     }
   ];
 
-  const PARAMS_CONTENTS = [
+  var PARAMS_CONTENTS = [
     {
       className: 'module',
       begin: "\\b" + RE_MODULE_IDENT, returnBegin: true,
@@ -104,7 +106,7 @@ function(hljs) {
     }
   ];
 
-  const PARAMS_MODE = {
+  var PARAMS_MODE = {
     begin: RE_IDENT,
     end: '(,|\\n|\\))',
     relevance: 0,
@@ -121,7 +123,7 @@ function(hljs) {
     ]
   };
 
-  const FUNCTION_BLOCK_MODE = {
+  var FUNCTION_BLOCK_MODE = {
     className: 'function',
     relevance: 0,
     keywords: KEYWORDS,
@@ -170,7 +172,7 @@ function(hljs) {
   };
   MODULE_ACCESS_CONTENTS.push(FUNCTION_BLOCK_MODE);
 
-  const CONSTRUCTOR_MODE = {
+  var CONSTRUCTOR_MODE = {
     className: 'constructor',
     begin: RE_MODULE_IDENT + '\\(',
     end: '\\)',
@@ -186,7 +188,7 @@ function(hljs) {
     ]
   };
 
-  const PATTERN_MATCH_BLOCK_MODE = {
+  var PATTERN_MATCH_BLOCK_MODE = {
     className: 'pattern-match',
     begin: '\\|',
     returnBegin: true,
@@ -195,7 +197,7 @@ function(hljs) {
     relevance: 0,
     contains: [
       CONSTRUCTOR_MODE,
-      OPERATOR_MODE,    
+      OPERATOR_MODE,
       {
         relevance: 0,
         className: 'constructor',
@@ -204,7 +206,7 @@ function(hljs) {
     ]
   };
 
-  const MODULE_ACCESS_MODE = {
+  var MODULE_ACCESS_MODE = {
     className: 'module-access',
     keywords: KEYWORDS,
     returnBegin: true,
@@ -234,8 +236,9 @@ function(hljs) {
   };
 
   PARAMS_CONTENTS.push(MODULE_ACCESS_MODE);
-  
+
   return {
+    name: 'ReasonML',
     aliases: ['re'],
     keywords: KEYWORDS,
     illegal: '(:\\-|:=|\\${|\\+=)',

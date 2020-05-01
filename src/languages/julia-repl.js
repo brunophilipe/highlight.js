@@ -2,6 +2,7 @@
 Language: Julia REPL
 Description: Julia REPL sessions
 Author: Morten Piibeleht <morten.piibeleht@gmail.com>
+Website: https://julialang.org
 Requires: julia.js
 
 The Julia REPL code blocks look something like the following:
@@ -21,8 +22,9 @@ Using simply spaces to identify line continuations may get a false-positive if t
 also prints out six spaces, but such cases should be rare.
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'Julia REPL',
     contains: [
       {
         className: 'meta',

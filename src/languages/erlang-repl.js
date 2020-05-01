@@ -1,11 +1,13 @@
 /*
- Language: Erlang REPL
- Author: Sergey Ignatov <sergey@ignatov.spb.su>
+Language: Erlang REPL
+Author: Sergey Ignatov <sergey@ignatov.spb.su>
+Website: https://www.erlang.org
 Category: functional
- */
+*/
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'Erlang REPL',
     keywords: {
       built_in:
         'spawn spawn_link self',

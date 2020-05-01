@@ -3,10 +3,12 @@ Language: Mojolicious
 Requires: xml.js, perl.js
 Author: Dotan Dimet <dotan@corky.net>
 Description: Mojolicious .ep (Embedded Perl) templates
+Website: https://mojolicious.org
 Category: template
 */
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'Mojolicious',
     subLanguage: 'xml',
     contains: [
       {

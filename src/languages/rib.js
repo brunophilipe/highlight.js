@@ -2,11 +2,13 @@
 Language: RenderMan RIB
 Author: Konstantin Evdokimenko <qewerty@gmail.com>
 Contributors: Shuen-Huei Guan <drake.guan@gmail.com>
+Website: https://renderman.pixar.com/resources/RenderMan_20/ribBinding.html
 Category: graphics
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'RenderMan RIB',
     keywords:
       'ArchiveRecord AreaLightSource Atmosphere Attribute AttributeBegin AttributeEnd Basis ' +
       'Begin Blobby Bound Clipping ClippingPlane Color ColorSamples ConcatTransform Cone ' +

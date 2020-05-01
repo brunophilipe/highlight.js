@@ -1,6 +1,7 @@
 /*
-Language: PostgreSQL SQL dialect and PL/pgSQL
+Language: PostgreSQL and PL/pgSQL
 Author: Egor Rogov (e.rogov@postgrespro.ru)
+Website: https://www.postgresql.org/docs/11/sql.html
 Description:
     This language incorporates both PostgreSQL SQL dialect and PL/pgSQL language.
     It is based on PostgreSQL version 11. Some notes:
@@ -15,13 +16,13 @@ Description:
       some names highlighted while others not looks ugly.
 */
 
-function(hljs) {
+export default function(hljs) {
   var COMMENT_MODE = hljs.COMMENT('--', '$');
   var UNQUOTED_IDENT = '[a-zA-Z_][a-zA-Z_0-9$]*';
   var DOLLAR_STRING = '\\$([a-zA-Z_]?|[a-zA-Z_][a-zA-Z_0-9]*)\\$';
   var LABEL = '<<\\s*' + UNQUOTED_IDENT + '\\s*>>';
 
-  var SQL_KW = 
+  var SQL_KW =
     // https://www.postgresql.org/docs/11/static/sql-keywords-appendix.html
     // https://www.postgresql.org/docs/11/static/sql-commands.html
     // SQL commands (starting words)
@@ -71,7 +72,7 @@ function(hljs) {
     'SUPERUSER NOSUPERUSER CREATEDB NOCREATEDB CREATEROLE NOCREATEROLE INHERIT NOINHERIT ' +
     'LOGIN NOLOGIN REPLICATION NOREPLICATION BYPASSRLS NOBYPASSRLS ';
 
-  var PLPGSQL_KW = 
+  var PLPGSQL_KW =
     'ALIAS BEGIN CONSTANT DECLARE END EXCEPTION RETURN PERFORM|10 RAISE GET DIAGNOSTICS ' +
     'STACKED|10 FOREACH LOOP ELSIF EXIT WHILE REVERSE SLICE DEBUG LOG INFO NOTICE WARNING ASSERT ' +
     'OPEN ';
@@ -94,8 +95,8 @@ function(hljs) {
     'REGNAMESPACE|10 REGCONFIG|10 REGDICTIONARY|10 ';// +
     // some types from standard extensions
     'HSTORE|10 LO LTREE|10 ';
-    
-  var TYPES_RE = 
+
+  var TYPES_RE =
     TYPES.trim()
          .split(' ')
          .map( function(val) { return val.split('|')[0]; } )
@@ -209,7 +210,7 @@ function(hljs) {
     'ACOS ACOSD ASIN ASIND ATAN ATAND ATAN2 ATAN2D COS COSD COT COTD SIN SIND TAN TAND ' +
     // https://www.postgresql.org/docs/11/static/functions-string.html
     'BIT_LENGTH CHAR_LENGTH CHARACTER_LENGTH LOWER OCTET_LENGTH OVERLAY POSITION SUBSTRING TREAT TRIM UPPER ' +
-    'ASCII BTRIM CHR CONCAT CONCAT_WS CONVERT CONVERT_FROM CONVERT_TO DECODE ENCODE INITCAP' +
+    'ASCII BTRIM CHR CONCAT CONCAT_WS CONVERT CONVERT_FROM CONVERT_TO DECODE ENCODE INITCAP ' +
     'LEFT LENGTH LPAD LTRIM MD5 PARSE_IDENT PG_CLIENT_ENCODING QUOTE_IDENT|10 QUOTE_LITERAL|10 ' +
     'QUOTE_NULLABLE|10 REGEXP_MATCH REGEXP_MATCHES REGEXP_REPLACE REGEXP_SPLIT_TO_ARRAY ' +
     'REGEXP_SPLIT_TO_TABLE REPEAT REPLACE REVERSE RIGHT RPAD RTRIM SPLIT_PART STRPOS SUBSTR ' +
@@ -228,7 +229,7 @@ function(hljs) {
     'AREA CENTER DIAMETER HEIGHT ISCLOSED ISOPEN NPOINTS PCLOSE POPEN RADIUS WIDTH ' +
     'BOX BOUND_BOX CIRCLE LINE LSEG PATH POLYGON ' +
     // https://www.postgresql.org/docs/11/static/functions-net.html
-    'ABBREV BROADCAST HOST HOSTMASK MASKLEN NETMASK NETWORK SET_MASKLEN TEXT INET_SAME_FAMILY' +
+    'ABBREV BROADCAST HOST HOSTMASK MASKLEN NETMASK NETWORK SET_MASKLEN TEXT INET_SAME_FAMILY ' +
     'INET_MERGE MACADDR8_SET7BIT ' +
     // https://www.postgresql.org/docs/11/static/functions-textsearch.html
     'ARRAY_TO_TSVECTOR GET_CURRENT_TS_CONFIG NUMNODE PLAINTO_TSQUERY PHRASETO_TSQUERY WEBSEARCH_TO_TSQUERY ' +
@@ -282,13 +283,14 @@ function(hljs) {
     //
     'GROUPING CAST ';
 
-    var FUNCTIONS_RE = 
+    var FUNCTIONS_RE =
       FUNCTIONS.trim()
                .split(' ')
                .map( function(val) { return val.split('|')[0]; } )
                .join('|');
 
     return {
+        name: 'PostgreSQL',
         aliases: ['postgres','postgresql'],
         case_insensitive: true,
         keywords: {
@@ -461,9 +463,9 @@ function(hljs) {
             contains: [{begin: '\\\\.'}],
             relevance: 10
           },
-          {
+          hljs.END_SAME_AS_BEGIN({
             begin: DOLLAR_STRING,
-            endSameAsBegin: true,
+            end: DOLLAR_STRING,
             contains: [
               {
                 // actually we want them all except SQL; listed are those with known implementations
@@ -472,7 +474,7 @@ function(hljs) {
                 endsWithParent: true
               }
             ]
-          },
+          }),
           // identifiers in quotes
           {
             begin: '"', end: '"',

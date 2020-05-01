@@ -1,9 +1,10 @@
 /*
 Language: AspectJ
 Author: Hakan Ozler <ozler.hakan@gmail.com>
+Website: https://www.eclipse.org/aspectj/
 Description: Syntax Highlighting for the AspectJ Language which is a general-purpose aspect-oriented extension to the Java programming language.
  */
-function (hljs) {
+export default function (hljs) {
   var KEYWORDS =
     'false synchronized int abstract float private char boolean static null if const ' +
     'for true while long throw strictfp finally protected import native final return void ' +
@@ -15,6 +16,7 @@ function (hljs) {
     'warning error soft precedence thisAspectInstance';
   var SHORTKEYS = 'get set args call';
   return {
+    name: 'AspectJ',
     keywords : KEYWORDS,
     illegal : /<\/|#/,
     contains : [

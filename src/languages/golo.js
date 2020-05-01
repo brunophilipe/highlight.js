@@ -1,11 +1,13 @@
 /*
 Language: Golo
 Author: Philippe Charriere <ph.charriere@gmail.com>
-Description: a lightweight dynamic language for the JVM, see http://golo-lang.org/
+Description: a lightweight dynamic language for the JVM
+Website: http://golo-lang.org/
 */
 
-function(hljs) {
+export default function(hljs) {
     return {
+      name: 'Golo',
       keywords: {
         keyword:
           'println readln print import module function local return let var ' +

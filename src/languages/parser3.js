@@ -2,10 +2,11 @@
 Language: Parser3
 Requires: xml.js
 Author: Oleg Volchkov <oleg@volchkov.net>
+Website: https://www.parser.ru/en/
 Category: template
 */
 
-function(hljs) {
+export default function(hljs) {
   var CURLY_SUBCOMMENT = hljs.COMMENT(
     '{',
     '}',
@@ -14,6 +15,7 @@ function(hljs) {
     }
   );
   return {
+    name: 'Parser3',
     subLanguage: 'xml', relevance: 0,
     contains: [
       hljs.COMMENT('^#', '$'),

@@ -2,9 +2,10 @@
 Language: STEP Part 21
 Contributors: Adam Joseph Cook <adam.joseph.cook@gmail.com>
 Description: Syntax highlighter for STEP Part 21 files (ISO 10303-21).
+Website: https://en.wikipedia.org/wiki/ISO_10303-21
 */
 
-function(hljs) {
+export default function(hljs) {
   var STEP21_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
   var STEP21_KEYWORDS = {
     keyword: 'HEADER ENDSEC DATA'
@@ -21,6 +22,7 @@ function(hljs) {
   };
 
   return {
+    name: 'STEP Part 21',
     aliases: ['p21', 'step', 'stp'],
     case_insensitive: true, // STEP 21 is case insensitive in theory, in practice all non-comments are capitalized.
     lexemes: STEP21_IDENT_RE,

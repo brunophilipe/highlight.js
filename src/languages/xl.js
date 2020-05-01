@@ -1,10 +1,11 @@
 /*
 Language: XL
 Author: Christophe de Dinechin <christophe@taodyne.com>
-Description: An extensible programming language, based on parse tree rewriting (http://xlr.sf.net)
+Description: An extensible programming language, based on parse tree rewriting
+Website: http://xlr.sf.net
 */
 
-function(hljs) {
+export default function(hljs) {
   var BUILTIN_MODULES =
     'ObjectLoader Animate MovieCredits Slides Filters Shading Materials LensFlare Mapping VLCAudioVideo ' +
     'StereoDecoder PointCloud NetworkAccess RemoteControl RegExp ChromaKey Snowfall NodeJS Speech Charts';
@@ -60,6 +61,7 @@ function(hljs) {
     ]
   };
   return {
+    name: 'XL',
     aliases: ['tao'],
     lexemes: /[a-zA-Z][a-zA-Z0-9_?]*/,
     keywords: XL_KEYWORDS,

@@ -2,11 +2,13 @@
 Language: Vim Script
 Author: Jun Yang <yangjvn@126.com>
 Description: full keyword and built-in from http://vimdoc.sourceforge.net/htmldoc/
+Website: https://www.vim.org
 Category: scripting
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'Vim Script',
     lexemes: /[!#@\w]+/,
     keywords: {
       keyword:

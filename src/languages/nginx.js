@@ -1,11 +1,12 @@
 /*
-Language: Nginx
+Language: Nginx config
 Author: Peter Leonov <gojpeg@yandex.ru>
 Contributors: Ivan Sagalaev <maniac@softwaremaniacs.org>
 Category: common, config
+Website: https://www.nginx.com
 */
 
-function(hljs) {
+export default function(hljs) {
   var VAR = {
     className: 'variable',
     variants: [
@@ -68,6 +69,7 @@ function(hljs) {
   };
 
   return {
+    name: 'Nginx config',
     aliases: ['nginxconf'],
     contains: [
       hljs.HASH_COMMENT_MODE,

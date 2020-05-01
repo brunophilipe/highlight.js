@@ -1,9 +1,11 @@
 /*
 Language: Q
+Description: Q is a vector-based functional paradigm programming language built into the kdb+ database.
+             (K/Q/Kdb+ from Kx Systems)
 Author: Sergey Vidyuk <svidyuk@gmail.com>
-Description: K/Q/Kdb+ from Kx Systems
+Website: https://kx.com/connect-with-us/developers/
 */
-function(hljs) {
+export default function(hljs) {
   var Q_KEYWORDS = {
   keyword:
     'do while select delete by update from',
@@ -15,6 +17,7 @@ function(hljs) {
     '`float `double int `timestamp `timespan `datetime `time `boolean `symbol `char `byte `short `long `real `month `date `minute `second `guid'
   };
   return {
+  name: 'Q',
   aliases:['k', 'kdb'],
   keywords: Q_KEYWORDS,
   lexemes: /(`?)[A-Za-z0-9_]+\b/,

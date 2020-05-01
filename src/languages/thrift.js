@@ -2,12 +2,14 @@
 Language: Thrift
 Author: Oleg Efimov <efimovov@gmail.com>
 Description: Thrift message definition format
+Website: https://thrift.apache.org
 Category: protocols
 */
 
-function(hljs) {
+export default function(hljs) {
   var BUILT_IN_TYPES = 'bool byte i16 i32 i64 double string binary';
   return {
+    name: 'Thrift',
     keywords: {
       keyword:
         'namespace const typedef struct enum service exception void oneway set list map required optional',

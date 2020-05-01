@@ -1,29 +1,27 @@
 /*
 Language: Matlab
 Author: Denis Bardadym <bardadymchik@gmail.com>
-Contributors: Eugene Nizhibitsky <nizhibitsky@ya.ru>
+Contributors: Eugene Nizhibitsky <nizhibitsky@ya.ru>, Egor Rogov <e.rogov@postgrespro.ru>
+Website: https://www.mathworks.com/products/matlab.html
 Category: scientific
 */
 
-function(hljs) {
-  var COMMON_CONTAINS = [
-    hljs.C_NUMBER_MODE,
-    {
-      className: 'string',
-      begin: '\'', end: '\'',
-      contains: [hljs.BACKSLASH_ESCAPE, {begin: '\'\''}]
-    }
-  ];
+/*
+  Formal syntax is not published, helpful link:
+  https://github.com/kornilova-l/matlab-IntelliJ-plugin/blob/master/src/main/grammar/Matlab.bnf
+*/
+export default function(hljs) {
+
+  var TRANSPOSE_RE = '(\'|\\.\')+';
   var TRANSPOSE = {
     relevance: 0,
     contains: [
-      {
-        begin: /'['\.]*/
-      }
+      { begin: TRANSPOSE_RE }
     ]
   };
 
   return {
+    name: 'Matlab',
     keywords: {
       keyword:
         'break case catch classdef continue else elseif end enumerated events for function ' +
@@ -63,34 +61,44 @@ function(hljs) {
         ]
       },
       {
-        begin: /[a-zA-Z_][a-zA-Z_0-9]*'['\.]*/,
-        returnBegin: true,
+        className: 'built_in',
+        begin: /true|false/,
         relevance: 0,
+        starts: TRANSPOSE
+      },
+      {
+        begin: '[a-zA-Z][a-zA-Z_0-9]*' + TRANSPOSE_RE,
+        relevance: 0
+      },
+      {
+        className: 'number',
+        begin: hljs.C_NUMBER_RE,
+        relevance: 0,
+        starts: TRANSPOSE
+      },
+      {
+        className: 'string',
+        begin: '\'', end: '\'',
         contains: [
-          {begin: /[a-zA-Z_][a-zA-Z_0-9]*/, relevance: 0},
-          TRANSPOSE.contains[0]
-        ]
+          hljs.BACKSLASH_ESCAPE,
+          {begin: '\'\''}]
       },
       {
-        begin: '\\[', end: '\\]',
-        contains: COMMON_CONTAINS,
+        begin: /\]|}|\)/,
         relevance: 0,
         starts: TRANSPOSE
       },
       {
-        begin: '\\{', end: /}/,
-        contains: COMMON_CONTAINS,
-        relevance: 0,
-        starts: TRANSPOSE
-      },
-      {
-        // transpose operators at the end of a function call
-        begin: /\)/,
-        relevance: 0,
+        className: 'string',
+        begin: '"', end: '"',
+        contains: [
+          hljs.BACKSLASH_ESCAPE,
+          {begin: '""'}
+        ],
         starts: TRANSPOSE
       },
       hljs.COMMENT('^\\s*\\%\\{\\s*$', '^\\s*\\%\\}\\s*$'),
       hljs.COMMENT('\\%', '$')
-    ].concat(COMMON_CONTAINS)
+    ]
   };
 }

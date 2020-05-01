@@ -2,9 +2,10 @@
 Language: AngelScript
 Author: Melissa Geels <melissa@nimble.tools>
 Category: scripting
+Website: https://www.angelcode.com/angelscript/
 */
 
-function(hljs) {
+export default function(hljs) {
   var builtInTypeMode = {
     className: 'built_in',
     begin: '\\b(void|bool|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|string|ref|array|double|float|auto|dictionary)'
@@ -25,12 +26,14 @@ function(hljs) {
   objectHandleMode.contains = [ genericMode ];
 
   return {
-    aliases: [ 'asc' ],
+    name: 'AngelScript',
+    aliases: ['asc'],
 
     keywords:
       'for in|0 break continue while do|0 return if else case switch namespace is cast ' +
       'or and xor not get|0 in inout|10 out override set|0 private public const default|0 ' +
-      'final shared external mixin|10 enum typedef funcdef this super import from interface',
+      'final shared external mixin|10 enum typedef funcdef this super import from interface ' +
+      'abstract|0 try catch protected explicit property',
 
     // avoid close detection with C# and JS
     illegal: '(^using\\s+[A-Za-z0-9_\\.]+;$|\\bfunction\s*[^\\(])',

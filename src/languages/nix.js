@@ -1,11 +1,12 @@
 /*
 Language: Nix
 Author: Domen Kožar <domen@dev.si>
-Description: Nix functional language. See http://nixos.org/nix
+Description: Nix functional language
+Website: http://nixos.org/nix
 */
 
 
-function(hljs) {
+export default function(hljs) {
   var NIX_KEYWORDS = {
     keyword:
       'rec with let in inherit assert if else then',
@@ -48,6 +49,7 @@ function(hljs) {
   ];
   ANTIQUOTE.contains = EXPRESSIONS;
   return {
+    name: 'Nix',
     aliases: ["nixos"],
     keywords: NIX_KEYWORDS,
     contains: EXPRESSIONS

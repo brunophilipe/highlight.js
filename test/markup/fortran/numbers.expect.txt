@@ -13,3 +13,7 @@
 var1
 va1r
 mo_tot_8 = <span class="hljs-number">1.</span>/(<span class="hljs-number">0.4</span>*<span class="hljs-built_in">log</span>(<span class="hljs-built_in">float</span>(elec_num_tot_8+<span class="hljs-number">0.4</span>)))
+
+<span class="hljs-number">6_ikind</span>
+<span class="hljs-number">1_c_short</span>
+<span class="hljs-number">6.666666666666666_DBL</span>

@@ -6,7 +6,7 @@ Description: Syntax Highlighting for the crmsh DSL
 Category: config
 */
 
-function(hljs) {
+export default function(hljs) {
   var RESOURCES = 'primitive rsc_template';
 
   var COMMANDS = 'group clone ms master location colocation order fencing_topology ' +
@@ -26,6 +26,7 @@ function(hljs) {
   var LITERALS = 'Master Started Slave Stopped start promote demote stop monitor true false';
 
   return {
+    name: 'crmsh',
     aliases: ['crm', 'pcmk'],
     case_insensitive: true,
     keywords: {

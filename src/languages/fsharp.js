@@ -2,9 +2,10 @@
 Language: F#
 Author: Jonas Follesø <jonas@follesoe.no>
 Contributors: Troy Kershaw <hello@troykershaw.com>, Henrik Feldt <henrik@haf.se>
+Website: https://docs.microsoft.com/en-us/dotnet/fsharp/
 Category: functional
 */
-function(hljs) {
+export default function(hljs) {
   var TYPEPARAM = {
     begin: '<', end: '>',
     contains: [
@@ -13,6 +14,7 @@ function(hljs) {
   };
 
   return {
+    name: 'F#',
     aliases: ['fs'],
     keywords:
       'abstract and as assert base begin class default delegate do done ' +

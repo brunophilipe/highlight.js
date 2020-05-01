@@ -1,11 +1,13 @@
 /*
-Language: AVR Assembler
+Language: AVR Assembly
 Author: Vladimir Ermakov <vooon341@gmail.com>
 Category: assembler
+Website: https://www.microchip.com/webdoc/avrassembler/avrassembler.wb_instruction_list.html
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'AVR Assembly',
     case_insensitive: true,
     lexemes: '\\.?' + hljs.IDENT_RE,
     keywords: {
@@ -58,7 +60,7 @@ function(hljs) {
       },
       {className: 'symbol',  begin: '^[A-Za-z0-9_.$]+:'},
       {className: 'meta', begin: '#', end: '$'},
-      {  // подстановка в «.macro»
+      {  // substitution within a macro
         className: 'subst',
         begin: '@[0-9]+'
       }

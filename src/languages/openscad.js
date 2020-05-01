@@ -2,10 +2,11 @@
 Language: OpenSCAD
 Author: Dan Panzarella <alsoelp@gmail.com>
 Description: OpenSCAD is a language for the 3D CAD modeling software of the same name.
+Website: https://www.openscad.org
 Category: scientific
 */
 
-function(hljs) {
+export default function(hljs) {
 	var SPECIAL_VARS = {
 		className: 'keyword',
 		begin: '\\$(f[asn]|t|vp[rtd]|children)'
@@ -43,6 +44,7 @@ function(hljs) {
 	};
 
 	return {
+		name: 'OpenSCAD',
 		aliases: ['scad'],
 		keywords: {
 			keyword: 'function module include use for intersection_for if else \\%',

@@ -1,36 +1,34 @@
 'use strict';
 
-let _ = require('lodash');
-
-describe('block class names', function() {
-  before(function() {
+describe('block class names',  () => {
+  before( () => {
     const testHTML = document.querySelectorAll('#build-classname .hljs');
 
-    this.blocks = _.map(testHTML, 'className');
+    this.blocks = [...testHTML].map((x) => x.className);
   });
 
-  it('should add language class name to block', function() {
+  it('should add language class name to block',  () => {
     const expected = 'some-class hljs xml',
           actual   = this.blocks[0];
 
     actual.should.equal(expected);
   });
 
-  it('should not clutter block class (first)', function () {
+  it('should not clutter block class (first)',  () => {
     const expected = 'hljs some-class xml',
           actual   = this.blocks[1];
 
     actual.should.equal(expected);
   });
 
-  it('should not clutter block class (last)', function () {
+  it('should not clutter block class (last)',  () => {
     const expected = 'some-class hljs xml',
           actual   = this.blocks[2];
 
     actual.should.equal(expected);
   });
 
-  it('should not clutter block class (spaces around)', function () {
+  it('should not clutter block class (spaces around)',  () => {
     const expected = 'hljs some-class xml',
           actual   = this.blocks[3];
 

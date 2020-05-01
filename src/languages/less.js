@@ -1,10 +1,12 @@
 /*
 Language: Less
+Description: It's CSS, with just a little more.
 Author:   Max Mikhailov <seven.phases.max@gmail.com>
-Category: css
+Website: http://lesscss.org
+Category: common, css
 */
 
-function(hljs) {
+export default function(hljs) {
   var IDENT_RE        = '[\\w-]+'; // yes, Less identifiers may begin with a digit
   var INTERP_IDENT_RE = '(' + IDENT_RE + '|@{' + IDENT_RE + '})';
 
@@ -138,6 +140,7 @@ function(hljs) {
   );
 
   return {
+    name: 'Less',
     case_insensitive: true,
     illegal: '[=>\'/<($"]',
     contains: RULES

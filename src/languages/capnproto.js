@@ -2,11 +2,13 @@
 Language: Cap’n Proto
 Author: Oleg Efimov <efimovov@gmail.com>
 Description: Cap’n Proto message definition format
+Website: https://capnproto.org/capnp-tool.html
 Category: protocols
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'Cap’n Proto',
     aliases: ['capnp'],
     keywords: {
       keyword:

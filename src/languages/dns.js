@@ -1,11 +1,13 @@
 /*
-Language: DNS Zone file
+Language: DNS Zone
 Author: Tim Schumacher <tim@datenknoten.me>
 Category: config
+Website: https://en.wikipedia.org/wiki/Zone_file
 */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'DNS Zone',
     aliases: ['bind', 'zone'],
     keywords: {
       keyword:

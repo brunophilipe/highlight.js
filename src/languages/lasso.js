@@ -2,9 +2,10 @@
 Language: Lasso
 Author: Eric Knibbe <eric@lassosoft.com>
 Description: Lasso is a language and server platform for database-driven web applications. This definition handles Lasso 9 syntax and LassoScript for Lasso 8.6 and earlier.
+Website: http://www.lassosoft.com/What-Is-Lasso
 */
 
-function(hljs) {
+export default function(hljs) {
   var LASSO_IDENT_RE = '[a-zA-Z_][\\w.]*';
   var LASSO_ANGLE_RE = '<\\?(lasso(script)?|=)';
   var LASSO_CLOSE_RE = '\\]|\\?>';
@@ -112,6 +113,7 @@ function(hljs) {
     }
   ];
   return {
+    name: 'Lasso',
     aliases: ['ls', 'lassoscript'],
     case_insensitive: true,
     lexemes: LASSO_IDENT_RE + '|&[lg]t;',

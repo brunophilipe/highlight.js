@@ -1,12 +1,13 @@
 /*
  Language: Groovy
  Author: Guillaume Laforge <glaforge@gmail.com>
- Website: http://glaforge.appspot.com
  Description: Groovy programming language implementation inspired from Vsevolod's Java mode
+ Website: https://groovy-lang.org
  */
 
-function(hljs) {
+export default function(hljs) {
     return {
+        name: 'Groovy',
         keywords: {
             literal : 'true false null',
             keyword:

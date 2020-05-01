@@ -3,9 +3,10 @@ Language: VHDL
 Author: Igor Kalnitsky <igor@kalnitsky.org>
 Contributors: Daniel C.K. Kho <daniel.kho@tauhop.com>, Guillaume Savaton <guillaume.savaton@eseo.fr>
 Description: VHDL is a hardware description language used in electronic design automation to describe digital and mixed-signal systems.
+Website: https://en.wikipedia.org/wiki/VHDL
 */
 
-function(hljs) {
+export default function(hljs) {
   // Regular expression for VHDL numeric literals.
 
   // Decimal literal:
@@ -19,6 +20,7 @@ function(hljs) {
   var NUMBER_RE = '\\b(' + BASED_LITERAL_RE + '|' + DECIMAL_LITERAL_RE + ')';
 
   return {
+    name: 'VHDL',
     case_insensitive: true,
     keywords: {
       keyword:

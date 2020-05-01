@@ -3,11 +3,13 @@ Language: HTTP
 Description: HTTP request and response headers with automatic body highlighting
 Author: Ivan Sagalaev <maniac@softwaremaniacs.org>
 Category: common, protocols
+Website: https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview
 */
 
-function(hljs) {
+export default function(hljs) {
   var VERSION = 'HTTP/[0-9\\.]+';
   return {
+    name: 'HTTP',
     aliases: ['https'],
     illegal: '\\S',
     contains: [

@@ -5,7 +5,7 @@ Description: built-in language DIRECTUM
 Category: enterprise
 */
 
-function(hljs) {
+export default function(hljs) {
   // Определение идентификаторов
   var UNDERSCORE_IDENT_RE = "[A-Za-zА-Яа-яёЁ_!][A-Za-zА-Яа-яёЁ_0-9]*";
 
@@ -3130,7 +3130,7 @@ function(hljs) {
     keywords: KEYWORDS,
     begin: UNDERSCORE_IDENT_RE,
     relevance: 0,
-    containts: [TYPES, METHODS],
+    contains: [TYPES, METHODS],
   };
 
   // Имена функций
@@ -3161,6 +3161,7 @@ function(hljs) {
   };
 
   return {
+    name: 'ISBL',
     aliases: ["isbl"],
     case_insensitive: true,
     lexemes: UNDERSCORE_IDENT_RE,

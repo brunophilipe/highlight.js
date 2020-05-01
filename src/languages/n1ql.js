@@ -3,10 +3,12 @@
  Author: Andres Täht <andres.taht@gmail.com>
  Contributors: Rene Saarsoo <nene@triin.net>
  Description: Couchbase query language
+ Website: https://www.couchbase.com/products/n1ql
  */
 
-function(hljs) {
+export default function(hljs) {
   return {
+    name: 'N1QL',
     case_insensitive: true,
     contains: [
       {

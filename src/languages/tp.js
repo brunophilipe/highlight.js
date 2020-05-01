@@ -5,7 +5,7 @@ Description: FANUC TP programming language (TPP).
 */
 
 
-function(hljs) {
+export default function(hljs) {
   var TPID = {
     className: 'number',
     begin: '[1-9][0-9]*', /* no leading zeros */
@@ -17,8 +17,8 @@ function(hljs) {
   };
   var TPDATA = {
     className: 'built_in',
-    begin: '(AR|P|PAYLOAD|PR|R|SR|RSR|LBL|VR|UALM|MESSAGE|UTOOL|UFRAME|TIMER|\
-    TIMER_OVERFLOW|JOINT_MAX_SPEED|RESUME_PROG|DIAG_REC)\\[', end: '\\]',
+    begin: '(AR|P|PAYLOAD|PR|R|SR|RSR|LBL|VR|UALM|MESSAGE|UTOOL|UFRAME|TIMER|' +
+    'TIMER_OVERFLOW|JOINT_MAX_SPEED|RESUME_PROG|DIAG_REC)\\[', end: '\\]',
     contains: [
       'self',
       TPID,
@@ -37,6 +37,7 @@ function(hljs) {
   };
 
   return {
+    name: 'TP',
     keywords: {
       keyword:
         'ABORT ACC ADJUST AND AP_LD BREAK CALL CNT COL CONDITION CONFIG DA DB ' +
